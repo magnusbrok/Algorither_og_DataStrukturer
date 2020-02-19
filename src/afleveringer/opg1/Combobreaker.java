@@ -8,71 +8,70 @@ import java.util.Scanner;
 public class Combobreaker {
 
     public static void main(String[] args) {
-//        Scanner scan  = new Scanner(System.in);
-//        int n = scan.nextInt();
-//        ArrayList<String> input = new ArrayList<String>();
-//        for(int i = 0; i < n; i++){
-//            input.add(scan.next());
-//        }
-
-        String string = "C R L S R L C S L L C R S L R C S";
+        Scanner scan  = new Scanner(System.in);
+        int n = scan.nextInt();
         ArrayList<String> input = new ArrayList<String>();
-        Scanner stringScanner = new Scanner(string);
-        int n = 17;
         for(int i = 0; i < n; i++){
-            input.add(stringScanner.next());
+            input.add(scan.next());
         }
 
-        ArrayList<String> output = algo(input, 0, n);
+//        String string = "C R L S R L C S L L C R S L R C S";
+//        ArrayList<String> input = new ArrayList<String>();
+//        Scanner stringScanner = new Scanner(string);
+//        int n = 17;
+//        for(int i = 0; i < n; i++){
+//            input.add(stringScanner.next());
+//        }
 
-        System.out.println(output.toString());
+        ArrayList<String> output = new ArrayList<>();
+        ArrayList<String> result = new ArrayList<>();
+        ArrayList<String> combo = new ArrayList<>(Arrays.asList("C","L","R","S"));
+
+        output = algo(input, 0, n, combo, result);
+
+        for (int i = 0; i < output.size(); i++){
+            System.out.print(output.get(i) + " ");
+        }
 
     }
 
-    private static ArrayList<String> algo(ArrayList<String> A, int i, int n){
+    private static ArrayList<String> algo(ArrayList<String> A, int i, int n, ArrayList<String> combo, ArrayList<String> result){
 
         if(i < n){
-            ArrayList<String> result = new ArrayList<>();
-
             if (i < n-3){
                 ArrayList<String> subList = new ArrayList(A.subList(i, i+4));
                 Collections.sort(subList);
 
-                if(subList.equals(new ArrayList<>(Arrays.asList("C","L","R","S")))){
+                if(subList.equals(combo)){
 
-                    result.add(0, "F");
-                    result.addAll(algo(A, i+4, n));
-                    return result;
+                    result.add("F");
+                    return algo(A, i+4, n, combo, result);
                 }
             }
             if(A.get(i).equalsIgnoreCase("C")){
 
-                result.add(0, "M");
-                result.addAll(algo(A, i+1, n));
-                return result;
+                result.add("M");
+                return algo(A, i+1, n, combo, result);
             }
             else if(A.get(i).equalsIgnoreCase("L")){
 
-                result.add(0, "E");
-                result.addAll(algo(A, i+1, n));
-                return result;
+                result.add("E");
+                return algo(A, i+1, n, combo, result);
 
             }
             else if(A.get(i).equalsIgnoreCase("R")){
 
-                result.add(0, "C");
-                result.addAll(algo(A, i+1, n));
-                return result;
+                result.add("C");
+                return algo(A, i+1, n, combo, result);
             }
             else if(A.get(i).equalsIgnoreCase("S")){
 
-                result.add(0, "S");
-                result.addAll(algo(A, i+1, n));
-                return result;
+                result.add("S");
+                return algo(A, i+1, n, combo, result);
             }
 
         }
 
-        return new ArrayList<String>();
+        return result;
     }
 }
