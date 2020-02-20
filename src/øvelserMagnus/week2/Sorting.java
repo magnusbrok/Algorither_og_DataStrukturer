@@ -38,27 +38,26 @@ public class Sorting {
     public ArrayList<Integer> merge(ArrayList<Integer> array1, ArrayList<Integer> array2){
 
         ArrayList<Integer> returnArray = new ArrayList<>();
-        int posOne = 0;
-        int posTwo = 0;
+        int totalsize = array1.size() + array2.size();
 
 
-        while (returnArray.size() < array1.size() + array2.size()) {
+        while (returnArray.size() != totalsize) {
 
-            if (posOne >= array1.size()) {
-                returnArray.add(array2.get(posTwo));
-                posTwo++;
+            if (array1.size() == 0) {
+                returnArray.add(array2.get(0));
+                array2.remove(0);
             }
-            if (posTwo >= array2.size()) {
-                returnArray.add(array1.get(posOne));
-                posOne++;
+            if (array2.size() == 0) {
+                returnArray.add(array1.get(0));
+                array1.remove(0);
 
-            } else if (posOne < array1.size() && posTwo < array2.size()) {
-                if (array1.get(posOne) >= array2.get(posTwo)) {
-                    returnArray.add(array2.get(posTwo));
-                    posTwo++;
+            } else {
+                if (array1.get(0) >= array2.get(0)) {
+                    returnArray.add(array2.get(0));
+                    array2.remove(0);
                 } else {
-                    returnArray.add(array1.get(posOne));
-                    posOne++;
+                    returnArray.add(array1.get(0));
+                    array1.remove(0);
                 }
             }
         }

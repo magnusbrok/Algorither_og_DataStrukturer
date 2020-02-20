@@ -8,13 +8,11 @@ public class ringOfFire {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
+        // initialization:
         int N = scan.nextInt();
         int C = scan.nextInt();
         int K = scan.nextInt();
         int currentPos = 0;
-
-
-        // initialization:
         ArrayList<Integer> students = new ArrayList<>();
 
         for(int i = 0; i < N ; i++){
@@ -27,11 +25,7 @@ public class ringOfFire {
             if (currentPos >= students.size()) {
                 currentPos = currentPos % students.size();
             }
-            //System.out.println("Removed: " + students.get(currentPos));
             students.remove(currentPos);
-
-            //System.out.println(students);
-            //System.out.println("CurrentPos: "+ currentPos);
         }
 
         for (int i = 0; i < students.size() ;i++) {
