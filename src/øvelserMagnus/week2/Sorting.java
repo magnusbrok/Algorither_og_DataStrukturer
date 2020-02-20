@@ -1,5 +1,6 @@
 package øvelserMagnus.week2;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Sorting {
@@ -8,44 +9,59 @@ public class Sorting {
         Sorting sorter = new Sorting();
         Scanner scan = new Scanner(System.in);
 
- int[] array = {1, 10, 3, 4, 5};
- int[] array2 = {3, 5, 111, 4, 10};
-/**
+         ArrayList<Integer> array1 = new ArrayList<Integer>();
+         //array1.add(2); array1.add(4); array1.add(6);
+
+         ArrayList<Integer> array2 = new ArrayList<>();
+        //array2.add(1); array2.add(3); array2.add(5);
+
 
         int arrayLenght = scan.nextInt();
-        int[] array = new int[arrayLenght];
 
         for (int i = 0; i < arrayLenght; i++) {
-            array[i] = scan.nextInt();
+            array1.add(scan.nextInt());
         }
         int array2Lenght = scan.nextInt();
-        int[] array2 = new int[array2Lenght];
 
         for (int i = 0; i < array2Lenght; i++) {
-            array2[i] = scan.nextInt();
+            array2.add(scan.nextInt());
         }
 
-        for (int i : array2) {
+        ArrayList<Integer> mergerdArray = sorter.merge(array1, array2);
+
+        for (int i = 0; i < mergerdArray.size(); i++) {
+            System.out.print(mergerdArray.get(i) + " ");
         }
- **/
-        int [] mergerdArray = sorter.merge(array, array2);
-        for (int i = 0; i < mergerdArray.length-2; i++){
-            System.out.print(mergerdArray[i]+" ");
-        }
-        System.out.print("" + mergerdArray[mergerdArray.length-1]);
     }
 
 
-    public int[] merge(int[] array, int[] arrayTwo){
+    public ArrayList<Integer> merge(ArrayList<Integer> array1, ArrayList<Integer> array2){
 
-        int[] mergedArray = new int[array.length+arrayTwo.length];
+        ArrayList<Integer> returnArray = new ArrayList<>();
+        int posOne = 0;
+        int posTwo = 0;
 
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] <= arrayTwo[i]){
-                mergedArray[i] = array[i];
-            } else mergedArray[i] = arrayTwo[i];
+
+        while (returnArray.size() < array1.size() + array2.size()) {
+
+            if (posOne >= array1.size()) {
+                returnArray.add(array2.get(posTwo));
+                posTwo++;
+            }
+            if (posTwo >= array2.size()) {
+                returnArray.add(array1.get(posOne));
+                posOne++;
+
+            } else if (posOne < array1.size() && posTwo < array2.size()) {
+                if (array1.get(posOne) >= array2.get(posTwo)) {
+                    returnArray.add(array2.get(posTwo));
+                    posTwo++;
+                } else {
+                    returnArray.add(array1.get(posOne));
+                    posOne++;
+                }
+            }
         }
-
-        return mergedArray;
+        return returnArray;
     }
 }
