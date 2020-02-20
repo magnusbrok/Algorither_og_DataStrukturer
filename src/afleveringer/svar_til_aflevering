@@ -4,8 +4,8 @@ Den returner 3
 (Fordi den største række af ens tal er 2 som er der 3 gange)
 
 1.2
-Den checker om det næste tal i rækken er det samme som det nuværende tal.
+Den checker om talene fra indeks i til j er det samme, og returner false hvis de ikke er.
 
 1.3
-Den finder det største antal ens tal rækkefølge.
+Den finder det største antal ens tal der er i rækkefølge.
 

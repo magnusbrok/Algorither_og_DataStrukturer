@@ -4,7 +4,8 @@ public class testAfPseudo {
 
     public static void main(String[] args) {
         testAfPseudo test = new testAfPseudo();
-        int[] A = new int[]{3, 2, 2, 2, 4, 5, 5, 3};
+        //int[] A = new int[]{3, 2, 2, 2, 4, 5, 5, 3};
+        int[] A = new int[]{2, 2, 2, 2, 2, 2, 2 ,2 };
 
         System.out.println(test.ALG1(A, A.length));
 
@@ -31,5 +32,14 @@ public class testAfPseudo {
             if (A[k] != A[k+1]) return false;
         }
         return true;
+    }
+
+
+    public int efficientALG1(int[] A, int m){
+        int l = 0;
+
+
+
+        return l;
     }
 }
