@@ -5,6 +5,7 @@ public class FunWithArrays {
     public int ALG1(int[] A, int n){
 
         int l = 1;
+        int x = 1; // for runtime
 
         if (1 < n){
             int i = 0;
@@ -21,12 +22,14 @@ public class FunWithArrays {
                     j++;
 
                 }else{
-                    i++;
+                    i=j;
                     j = i+1;
                 }
+
+                x++; // for runtime
             }
         }
-
+        System.out.println(x); // for runtime
         return l;
     }
 }
