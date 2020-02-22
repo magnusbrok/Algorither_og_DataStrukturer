@@ -14,7 +14,7 @@ class FunWithArraysTest {
 
         int l = obj.ALG1(A,n);
 
-        assertEquals(l,3);
+        assertEquals(3,l);
     }
 
     @Test
@@ -26,7 +26,7 @@ class FunWithArraysTest {
 
         int l = obj.ALG1(A,n);
 
-        assertEquals(l,3);
+        assertEquals(3,l);
     }
 
     @Test
@@ -38,7 +38,7 @@ class FunWithArraysTest {
 
         int l = obj.ALG1(A,n);
 
-        assertEquals(l,1);
+        assertEquals(1,l);
     }
 
     @Test
@@ -50,6 +50,6 @@ class FunWithArraysTest {
 
         int l = obj.ALG1(A,n);
 
-        assertEquals(l,4);
+        assertEquals(4,l);
     }
 }
