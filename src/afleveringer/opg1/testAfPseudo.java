@@ -9,6 +9,8 @@ public class testAfPseudo {
 
         System.out.println(test.ALG1(A, A.length));
 
+
+
     }
 
     public int ALG1(int[] A, int n){
@@ -32,4 +34,12 @@ public class testAfPseudo {
         return true;
     }
 
+
+    public int efficientALG1(int[] A, int m){
+        int l = 0;
+
+
+
+        return l;
+    }
 }
