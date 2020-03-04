@@ -19,17 +19,13 @@ public class PeakAlgo3 {
 
        // System.out.println(peakAlgo3.peak(array, 0, array.length-1));
         System.out.println(peakAlgo3.peakiterative(array));
+
     }
 
     int peak(int[] array, int i, int j) {
 
         int m = (i+j)/2;
-/**
-        System.out.println("m =" +m);
-        System.out.println("i =" + i);
-        System.out.println("j =" +j);
-        System.out.println("");
- **/
+
         if (m == j && m == i) {
             return m;
         }
