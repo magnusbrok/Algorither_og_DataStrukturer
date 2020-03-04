@@ -48,30 +48,17 @@ class CaesarTest {
     }
 
     /**
-     * Cipher-shift
+     * Cipher-shift twice
      */
     @Test
     void CaesarTestInput2(){
-
-        // Arrange
-        int n;
-        String str;
-        Scanner scan;
-
         // Arrange input
-        n = 15;
-        str = "A B C 1 ^ A B C 2 A ^ ^ A B C";
-        scan = new Scanner(str);
-
-        char[] input = new char[n];
-        for(int i = 0; i < n; i++){
-            input[i] = scan.next().charAt(0);
-        }
+        char[] input = {'A', 'B', 'C', '1', '^', 'A', 'B', 'C', '2', 'A', '^', '^', 'A', 'B', 'C'};
 
         // Arrange expected output
-        n = 9;
-        str = "A B C B C D D E F";
-        scan = new Scanner(str);
+        int n = 9;
+        String str = "A B C B C D D E F";
+        Scanner scan = new Scanner(str);
 
         Stack<String> outputExp = new Stack<>();
         for(int i = 0; i < n; i++)
@@ -85,28 +72,19 @@ class CaesarTest {
 
     }
 
+    /**
+     * Cipher-shift
+     */
     @Test
     void CaesarTestInput3(){
 
-        // Arrange
-        int n;
-        String str;
-        Scanner scan;
-
         // Arrange input
-        n = 12;
-        str = "H E L L O 3 ^ T L O I A";
-        scan = new Scanner(str);
-
-        char[] input = new char[n];
-        for(int i = 0; i < n; i++){
-            input[i] = scan.next().charAt(0);
-        }
+        char[] input = {'H', 'E', 'L', 'L', 'O', '3', '^', 'T', 'L', 'O', 'I', 'A'};
 
         // Arrange expected output
-        n = 9;
-        str = "H E L L O W O R L D";
-        scan = new Scanner(str);
+        int n = 10;
+        String str = "H E L L O W O R L D";
+        Scanner scan = new Scanner(str);
 
         Stack<String> outputExp = new Stack<>();
         for(int i = 0; i < n; i++)
@@ -120,28 +98,19 @@ class CaesarTest {
 
     }
 
+    /**
+     * Cipher-shift
+     */
     @Test
     void CaesarTestInput4(){
 
-        // Arrange
-        int n;
-        String str;
-        Scanner scan;
-
         // Arrange input
-        n = 9;
-        str = "A B C 1 ^ ^ A B C";
-        scan = new Scanner(str);
-
-        char[] input = new char[n];
-        for(int i = 0; i < n; i++){
-            input[i] = scan.next().charAt(0);
-        }
+        char[] input = {'A', 'B', 'C', '1', '^', '^', 'A', 'B', 'C'};
 
         // Arrange expected output
-        n = 5;
-        str = "A B B C D";
-        scan = new Scanner(str);
+        int n = 5;
+        String str = "A B B C D";
+        Scanner scan = new Scanner(str);
 
         Stack<String> outputExp = new Stack<>();
         for(int i = 0; i < n; i++)
@@ -155,6 +124,9 @@ class CaesarTest {
 
     }
 
+    /**
+     * Cipher-shift overflow
+     */
     @Test
     void CaesarTestInput5(){
 
