@@ -11,6 +11,7 @@ public class Caesar {
     public static Stack<String> ALG(char[] input, int n){
 
         int i = 0;
+        int shift = 0;
         Stack<String> outputStack = new Stack<>();
 
         while (i < n){
@@ -18,14 +19,23 @@ public class Caesar {
 
             if (Character.isLetter(curr)){
 
+                char shifted = (char) (curr + shift);
+
+                outputStack.push(Character.toString(shifted));
+
+            }
+            else if (Character.isDigit(curr)){
                 outputStack.push(Character.toString(curr));
 
             }
-
             else if (curr == '^' && !outputStack.empty()){
 
-                outputStack.pop();
+                String pop = outputStack.pop();
 
+                if (Character.isDigit(pop.toCharArray()[0])){
+                    shift += Integer.parseInt(pop);
+
+                }
             }
             i++;
 
