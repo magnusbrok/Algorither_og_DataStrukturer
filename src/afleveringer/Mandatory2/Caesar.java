@@ -23,7 +23,7 @@ public class Caesar {
 
                 if (shifted > 'Z') {
 
-                    int diff = curr + shift - 'Z';
+                    int diff = shifted % 'Z';
 
                     shifted = (char)  ('A' + diff -1);
                 }
@@ -41,6 +41,10 @@ public class Caesar {
 
                 if (Character.isDigit(pop.toCharArray()[0])){
                     shift += Integer.parseInt(pop);
+
+                    if (shift > 26){
+                        shift = shift % 26;
+                    }
 
                 }
             }

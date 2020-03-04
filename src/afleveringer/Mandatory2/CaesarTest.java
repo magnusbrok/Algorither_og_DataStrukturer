@@ -151,5 +151,29 @@ class CaesarTest {
 
     }
 
+    @Test
+    void CaesarTestInput6(){
+
+        // Arrange input
+        char[] input = {'9', '9', '9', '^', '^', '^', '9', '9', '9', '^', '^', '^', 'A'};
+
+        // Arrange expected output
+        int n = 1;
+        String str = "C";
+        Scanner scan = new Scanner(str);
+
+        Stack<String> outputExp = new Stack<>();
+        for(int i = 0; i < n; i++) {
+            outputExp.push(scan.next());
+        }
+
+        // Act
+        Stack<String> outputAct = Caesar.ALG(input, input.length);
+
+        // Assert
+        assertEquals(outputExp, outputAct);
+
+    }
+
 
 }
