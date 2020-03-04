@@ -1,10 +1,25 @@
 package afleveringer.Mandatory2;
 
+import java.util.Scanner;
 import java.util.Stack;
 
 public class Caesar {
 
     public static void main(String[] args) {
+
+        Scanner scan  = new Scanner(System.in);
+        int n = scan.nextInt();
+
+        char[] input = new char[n];
+        for(int i = 0; i < n; i++){
+            input[i] = scan.next().charAt(0);
+        }
+
+        Stack<String> output = ALG(input, n);
+
+        for (String str : output){
+            System.out.print(str + " ");
+        }
 
     }
 
