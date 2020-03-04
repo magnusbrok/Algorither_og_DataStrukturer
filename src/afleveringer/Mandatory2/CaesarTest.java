@@ -2,6 +2,7 @@ package afleveringer.Mandatory2;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -15,19 +16,14 @@ class CaesarTest {
      */
     void CaesarTestInput1(){
 
-        // Arrange
-        int n;
-        String str;
-        Scanner scan;
-
         // Arrange input
-        n = 17;
-        str = "A ^ L G ^ O ^ R ^ I T H M S ^ ^ ^";
-        scan = new Scanner(str);
+        int n = 17;
+        String str = "A ^ L G ^ O ^ R ^ I T H M S ^ ^ ^";
+        Scanner scan = new Scanner(str);
 
-        char[] input = new char[n];
+        ArrayList<String> input = new ArrayList<>();
         for(int i = 0; i < n; i++){
-            input[i] = scan.next().charAt(0);
+            input.add(scan.next());
         }
 
         // Arrange expected output
@@ -40,7 +36,7 @@ class CaesarTest {
             outputExp.push(scan.next());
 
         // Act
-        Stack<String> outputAct = Caesar.ALG(input, input.length);
+        Stack<String> outputAct = Caesar.ALG(input, input.size());
 
         // Assert
         assertEquals(outputExp, outputAct);
@@ -52,20 +48,28 @@ class CaesarTest {
      */
     @Test
     void CaesarTestInput2(){
+
         // Arrange input
-        char[] input = {'A', 'B', 'C', '1', '^', 'A', 'B', 'C', '2', 'A', '^', '^', 'A', 'B', 'C'};
+        int n = 15;
+        String str = "A B C 1 ^ A B C 2 A ^ ^ A B C";
+        Scanner scan = new Scanner(str);
+
+        ArrayList<String> input = new ArrayList<>();
+        for(int i = 0; i < n; i++){
+            input.add(scan.next());
+        }
 
         // Arrange expected output
-        int n = 9;
-        String str = "A B C B C D D E F";
-        Scanner scan = new Scanner(str);
+        n = 9;
+        str = "A B C B C D D E F";
+        scan = new Scanner(str);
 
         Stack<String> outputExp = new Stack<>();
         for(int i = 0; i < n; i++)
             outputExp.push(scan.next());
 
         // Act
-        Stack<String> outputAct = Caesar.ALG(input, input.length);
+        Stack<String> outputAct = Caesar.ALG(input, input.size());
 
         // Assert
         assertEquals(outputExp, outputAct);
@@ -79,19 +83,26 @@ class CaesarTest {
     void CaesarTestInput3(){
 
         // Arrange input
-        char[] input = {'H', 'E', 'L', 'L', 'O', '3', '^', 'T', 'L', 'O', 'I', 'A'};
+        int n = 12;
+        String str = "H E L L O 3 ^ T L O I A";
+        Scanner scan = new Scanner(str);
+
+        ArrayList<String> input = new ArrayList<>();
+        for(int i = 0; i < n; i++){
+            input.add(scan.next());
+        }
 
         // Arrange expected output
-        int n = 10;
-        String str = "H E L L O W O R L D";
-        Scanner scan = new Scanner(str);
+        n = 10;
+        str = "H E L L O W O R L D";
+        scan = new Scanner(str);
 
         Stack<String> outputExp = new Stack<>();
         for(int i = 0; i < n; i++)
             outputExp.push(scan.next());
 
         // Act
-        Stack<String> outputAct = Caesar.ALG(input, input.length);
+        Stack<String> outputAct = Caesar.ALG(input, input.size());
 
         // Assert
         assertEquals(outputExp, outputAct);
@@ -105,19 +116,26 @@ class CaesarTest {
     void CaesarTestInput4(){
 
         // Arrange input
-        char[] input = {'A', 'B', 'C', '1', '^', '^', 'A', 'B', 'C'};
+        int n = 9;
+        String str = "A B C 1 ^ ^ A B C";
+        Scanner scan = new Scanner(str);
+
+        ArrayList<String> input = new ArrayList<>();
+        for(int i = 0; i < n; i++){
+            input.add(scan.next());
+        }
 
         // Arrange expected output
-        int n = 5;
-        String str = "A B B C D";
-        Scanner scan = new Scanner(str);
+        n = 5;
+        str = "A B B C D";
+        scan = new Scanner(str);
 
         Stack<String> outputExp = new Stack<>();
         for(int i = 0; i < n; i++)
             outputExp.push(scan.next());
 
         // Act
-        Stack<String> outputAct = Caesar.ALG(input, input.length);
+        Stack<String> outputAct = Caesar.ALG(input, input.size());
 
         // Assert
         assertEquals(outputExp, outputAct);
@@ -131,12 +149,19 @@ class CaesarTest {
     void CaesarTestInput5(){
 
         // Arrange input
-        char[] input = {'A', '2', '^', 'Z'};
+        int n = 4;
+        String str = "A 2 ^ Z";
+        Scanner scan = new Scanner(str);
+
+        ArrayList<String> input = new ArrayList<>();
+        for(int i = 0; i < n; i++){
+            input.add(scan.next());
+        }
 
         // Arrange expected output
-        int n = 2;
-        String str = "A B";
-        Scanner scan = new Scanner(str);
+        n = 2;
+        str = "A B";
+        scan = new Scanner(str);
 
         Stack<String> outputExp = new Stack<>();
         for(int i = 0; i < n; i++) {
@@ -144,23 +169,33 @@ class CaesarTest {
         }
 
         // Act
-        Stack<String> outputAct = Caesar.ALG(input, input.length);
+        Stack<String> outputAct = Caesar.ALG(input, input.size());
 
         // Assert
         assertEquals(outputExp, outputAct);
 
     }
 
+    /**
+     * Cipher-shift double overflow
+     */
     @Test
     void CaesarTestInput6(){
 
         // Arrange input
-        char[] input = {'9', '9', '9', '^', '^', '^', '9', '9', '9', '^', '^', '^', 'A'};
+        int n = 3;
+        String str = "54 ^ A";
+        Scanner scan = new Scanner(str);
+
+        ArrayList<String> input = new ArrayList<>();
+        for(int i = 0; i < n; i++){
+            input.add(scan.next());
+        }
 
         // Arrange expected output
-        int n = 1;
-        String str = "C";
-        Scanner scan = new Scanner(str);
+        n = 1;
+        str = "C";
+        scan = new Scanner(str);
 
         Stack<String> outputExp = new Stack<>();
         for(int i = 0; i < n; i++) {
@@ -168,12 +203,45 @@ class CaesarTest {
         }
 
         // Act
-        Stack<String> outputAct = Caesar.ALG(input, input.length);
+        Stack<String> outputAct = Caesar.ALG(input, input.size());
 
         // Assert
         assertEquals(outputExp, outputAct);
 
     }
 
+    /**
+     * Cipher-shift with multi-digit
+     */
+    @Test
+    void CaesarTestInput7(){
+
+        // Arrange input
+        int n = 30;
+        String str = "W E L L D O N E Y O U N G P A D C Z I X 12 ^ ^ ^ ^ ^ O K O B";
+        Scanner scan = new Scanner(str);
+
+        ArrayList<String> input = new ArrayList<>();
+        for(int i = 0; i < n; i++){
+            input.add(scan.next());
+        }
+
+        // Arrange expected output
+        n = 20;
+        str = "W E L L D O N E Y O U N G P A D A W A N";
+        scan = new Scanner(str);
+
+        Stack<String> outputExp = new Stack<>();
+        for(int i = 0; i < n; i++) {
+            outputExp.push(scan.next());
+        }
+
+        // Act
+        Stack<String> outputAct = Caesar.ALG(input, input.size());
+
+        // Assert
+        assertEquals(outputExp, outputAct);
+
+    }
 
 }
