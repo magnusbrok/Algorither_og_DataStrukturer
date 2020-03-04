@@ -21,6 +21,13 @@ public class Caesar {
 
                 char shifted = (char) (curr + shift);
 
+                if (shifted > 'Z') {
+
+                    int diff = curr + shift - 'Z';
+
+                    shifted = (char)  ('A' + diff -1);
+                }
+
                 outputStack.push(Character.toString(shifted));
 
             }

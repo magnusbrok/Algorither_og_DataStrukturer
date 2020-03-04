@@ -131,11 +131,11 @@ class CaesarTest {
     void CaesarTestInput5(){
 
         // Arrange input
-        char[] input = {'A', '1', '^', 'Z'};
+        char[] input = {'A', '2', '^', 'Z'};
 
         // Arrange expected output
         int n = 2;
-        String str = "A A";
+        String str = "A B";
         Scanner scan = new Scanner(str);
 
         Stack<String> outputExp = new Stack<>();
