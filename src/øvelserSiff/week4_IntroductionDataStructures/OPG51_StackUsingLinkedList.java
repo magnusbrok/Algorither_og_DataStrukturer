@@ -4,19 +4,20 @@ import java.util.LinkedList;
 
 public class OPG51_StackUsingLinkedList {
 
+    private static LinkedList<Integer> linkedList =  new LinkedList<>();
+
     public static void main(String[] args) {
 
-    }
 
-    public class Stack {
-
-        public void push(){
-
-        }
-
-        public void pop(){
-
-        }
 
     }
+
+    public static void push(Integer element){
+        linkedList.add(element);
+    }
+
+    public static Integer pop() {
+        return linkedList.removeLast();
+    }
+
 }
