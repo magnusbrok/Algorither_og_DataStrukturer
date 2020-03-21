@@ -1,5 +1,6 @@
 package afleveringer.Mandatory2;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -10,9 +11,9 @@ public class Caesar {
         Scanner scan  = new Scanner(System.in);
         int n = scan.nextInt();
 
-        char[] input = new char[n];
+        ArrayList<String> input = new ArrayList<>();
         for(int i = 0; i < n; i++){
-            input[i] = scan.next().charAt(0);
+            input.add(scan.next());
         }
 
         Stack<String> output = ALG(input, n);
@@ -23,14 +24,14 @@ public class Caesar {
 
     }
 
-    public static Stack<String> ALG(char[] input, int n){
+    public static Stack<String> ALG(ArrayList<String> input, int n){
 
         int i = 0;
         int shift = 0;
         Stack<String> outputStack = new Stack<>();
 
         while (i < n){
-            char curr = input[i];
+            char curr = input.get(i).charAt(0);
 
             if (Character.isLetter(curr)){
 
@@ -47,7 +48,7 @@ public class Caesar {
 
             }
             else if (Character.isDigit(curr)){
-                outputStack.push(Character.toString(curr));
+                outputStack.push(input.get(i));
 
             }
             else if (curr == '^' && !outputStack.empty()){

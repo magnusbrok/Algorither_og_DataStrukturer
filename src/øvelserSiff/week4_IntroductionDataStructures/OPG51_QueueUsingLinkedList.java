@@ -3,9 +3,9 @@ package øvelserSiff.week4_IntroductionDataStructures;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-public class OPG51_StackUsingLinkedList {
+public class OPG51_QueueUsingLinkedList {
 
-    private static LinkedList<Integer> linkedList =  new LinkedList<>();
+    private static LinkedList<Integer> linkedList = new LinkedList<>();
 
     public static void main(String[] args) {
         Scanner inputScan = new Scanner(System.in);
@@ -16,24 +16,21 @@ public class OPG51_StackUsingLinkedList {
             String str = inputScan.nextLine();
             Scanner strScan = new Scanner(str);
 
-            if (strScan.next().contains("PU")){
+            if (strScan.next().contains("E")){
                 Integer integer = Integer.parseInt(strScan.next());
-                push(integer);
+                ENQueue(integer);
             }
             else if (!linkedList.isEmpty()){
-                System.out.println(pop());
+                System.out.println(DEQueue());
             }
         }
-
-
     }
 
-    public static void push(Integer element){
+    public static void ENQueue(Integer element) {
         linkedList.add(element);
     }
 
-    public static Integer pop() {
-        return linkedList.removeLast();
+    public static Integer DEQueue() {
+        return linkedList.removeFirst();
     }
-
 }

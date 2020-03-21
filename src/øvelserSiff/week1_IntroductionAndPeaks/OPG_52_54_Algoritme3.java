@@ -24,21 +24,21 @@ public class OPG_52_54_Algoritme3 {
     }
 
 
-    private static int findPeakRecursive(int[] arr, int minIndex, int maxIndex){
+    private static int findPeakRecursive(int[] arr, int i, int j){
 
-        int midIndex = (minIndex + maxIndex)/2;
+        int m = (i + j)/2;
 
-        if(midIndex == 0 || midIndex == arr.length-1){
-            return midIndex;
+        if(m == 0 || m == arr.length-1){
+            return m;
         }
-        else if (arr[midIndex -1] <= arr[midIndex] && arr[midIndex] >= arr[midIndex+1] ){
-            return midIndex;
+        else if (arr[m -1] <= arr[m] && arr[m] >= arr[m+1] ){
+            return m;
         }
-        else if (arr[midIndex -1] > arr[midIndex]){
-            return findPeakRecursive(arr, minIndex, midIndex-1);
+        else if (arr[m -1] > arr[m]){
+            return findPeakRecursive(arr, i, m-1);
         }
         else {
-            return findPeakRecursive(arr, minIndex+1, midIndex);
+            return findPeakRecursive(arr, i+1, j);
         }
     }
 
