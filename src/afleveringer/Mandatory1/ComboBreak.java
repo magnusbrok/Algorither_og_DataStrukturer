@@ -1,4 +1,4 @@
-package afleveringer.opg1;
+package afleveringer.Mandatory1;
 
 import java.util.ArrayList;
 import java.util.Collections;

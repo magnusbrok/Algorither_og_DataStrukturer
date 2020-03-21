@@ -28,7 +28,7 @@ public class ReachingPeak {
         if (i == j) {
             worstSpots.add(0);
             return worstSpots;
-        } 
+        }
 
 
         return worstSpots;

@@ -1,4 +1,4 @@
-package afleveringer.opg1;
+package afleveringer.Mandatory1;
 
 public class FunWithArrays {
 
