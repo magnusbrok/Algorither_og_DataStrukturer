@@ -1,9 +1,9 @@
-package øvelserSiff.week7_union;
+package øvelserSiff.week8_union;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
-public class PathCompression {
+public class WeightedUnion {
 
     private static int[] p;
     private static int[] size;
@@ -33,6 +33,9 @@ public class PathCompression {
                 union(i, j);
             }
         }
+
+        System.out.println(Arrays.toString(p));
+        System.out.println(Arrays.toString(size));
     }
 
     public static void init(int N){
@@ -47,13 +50,8 @@ public class PathCompression {
     }
 
     public static int find(int i){
-        ArrayList<Integer> route = new ArrayList<>();
         while (i != p[i]){
-            route.add(i);
             i = p[i];
-        }
-        for (int r : route){
-            p[r] = i;
         }
         return i;
     }

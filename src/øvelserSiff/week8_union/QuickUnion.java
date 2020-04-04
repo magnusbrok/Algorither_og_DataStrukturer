@@ -1,9 +1,10 @@
-package øvelserSiff.week7_union;
+package øvelserSiff.week8_union;
 
 import java.util.Scanner;
 
-public class QuickFind {
-    private static int[] id;
+public class QuickUnion {
+
+    private static int[] p;
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
@@ -13,7 +14,7 @@ public class QuickFind {
 
         scan.nextLine(); // wft? fixes the bug...
 
-        init(N);
+        p = init(N);
 
         for (int k = 0; k < M; k++){
             String str = scan.nextLine();
@@ -32,27 +33,27 @@ public class QuickFind {
         }
     }
 
-    public static void init(int N){
-        id = new int[N];
+    public static int[] init(int N){
+        int[] arr = new int[N];
         for (int i = 0; i < N; i++){
-            id[i] = i;
+            arr[i] = i;
         }
+        return arr;
     }
 
     public static int find(int i){
-        return id[i];
+        while (i != p[i]){
+            i = p[i];
+        }
+        return i;
     }
 
     public static void union(int i, int j){
-        int iID = find(i);
-        int jID = find(j);
+        int ri = find(i);
+        int rj = find(j);
 
-        if(iID != jID){
-            for(int k = 0; k < id.length; k++){
-                if(id[k] == iID){
-                    id[k] = jID;
-                }
-            }
+        if(ri != rj){
+            p[ri] = rj;
         }
     }
 }
