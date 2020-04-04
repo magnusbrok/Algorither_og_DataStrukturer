@@ -31,18 +31,13 @@ public class AdjacencyLists {
         int Q2 = scan.nextInt();
         for (int i = 0; i < Q2; i++){
             int v = scan.nextInt();
-            ArrayList<Integer> neighbours = UndirectedGraph.neighbours(v, adjList);
-            Collections.sort(neighbours);
-            StringBuilder str = new StringBuilder();
-            for (int neighbour : neighbours) {
-                str.append(neighbour).append(" ");
-            }
-            System.out.println(str);
+            String neighbours = UndirectedGraph.neighbours(v, adjList);
+            System.out.println(neighbours);
         }
 
     }
 
-    public static class UndirectedGraph {
+    private static class UndirectedGraph {
 
         public static void init(int V, ArrayList<ArrayList<Integer>> adjList){
             for (int i = 0; i < V; i++){
@@ -59,8 +54,14 @@ public class AdjacencyLists {
             return adjList.get(v1).contains(v2);
         }
 
-        public static ArrayList<Integer> neighbours(int v, ArrayList<ArrayList<Integer>> adjList){
-            return adjList.get(v);
+        public static String neighbours(int v, ArrayList<ArrayList<Integer>> adjList){
+            ArrayList<Integer> neighbours = adjList.get(v);
+            Collections.sort(neighbours);
+            StringBuilder str = new StringBuilder();
+            for (int neighbour : neighbours) {
+                str.append(neighbour).append(" ");
+            }
+            return str.toString();
         }
     }
 }
