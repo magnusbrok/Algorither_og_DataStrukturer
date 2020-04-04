@@ -1,4 +1,4 @@
-package Mandatory4;
+package afleveringer.Mandatory4;
 
 public class ClustersOfCapitalism {
 }
