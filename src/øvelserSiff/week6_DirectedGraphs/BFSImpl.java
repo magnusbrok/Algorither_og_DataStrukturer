@@ -18,7 +18,7 @@ public class BFSImpl {
             DirectedGraph.addEdge(v1, v2, adjList);
         }
 
-        int dist = BFS.iterative(0, 1, adjList);
+        int dist = BFS.iterative(0, 4, adjList);
         System.out.println(dist);
     }
 
@@ -85,14 +85,14 @@ public class BFSImpl {
                     if (!marked[i]) {
                         marked[i] = true;
                         distance[i] = distance[v] + 1;
-                        if (v == f){
+                        if (i == f){
                             return distance[f];
                         }
                         queue.add(i);
                     }
                 }
             }
-            return distance[f];
+            return -1; // if f is not reachable or do not exist
         }
     }
 }
