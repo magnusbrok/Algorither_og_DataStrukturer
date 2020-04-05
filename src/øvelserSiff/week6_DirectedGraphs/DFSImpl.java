@@ -1,13 +1,11 @@
 package øvelserSiff.week6_DirectedGraphs;
 
-import øvelserSiff.week5_UndrirectedGraphs.AdjacencyLists;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 import java.util.Stack;
 
-public class DFS {
+public class DFSImpl {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
@@ -23,25 +21,42 @@ public class DFS {
             DirectedGraph.addEdge(v1, v2, adjList);
         }
 
-        DirectedGraph dg = new DirectedGraph(adjList);
-        String str = dg.DFSRecursive(0);
+        DFS dfs = new DFS(adjList);
+
+        String str = dfs.recursive(0);
+        System.out.println("\n" + str);
+
+        str = dfs.iterative(0);
         System.out.println("\n" + str);
     }
 
     private static class DirectedGraph {
 
-        int vertices;
+        public static void init(int V, ArrayList<ArrayList<Integer>> adjList){
+            for (int i = 0; i < V; i++){
+                adjList.add(new ArrayList<>());
+            }
+        }
+
+        public static void addEdge(int v1, int v2, ArrayList<ArrayList<Integer>> adjList){
+            adjList.get(v1).add(v2);
+            Collections.sort(adjList.get(v1));
+        }
+    }
+
+    private static class DFS{
+        int n;
         ArrayList<ArrayList<Integer>> adjList;
         boolean[] marked;
         int time;
 
-        public DirectedGraph(ArrayList<ArrayList<Integer>> adjList){
-            vertices = adjList.size();
+        public DFS(ArrayList<ArrayList<Integer>> adjList){
+            n = adjList.size();
             this.adjList = adjList;
         }
 
-        public String DFSRecursive(int v){
-            marked = new boolean[vertices];
+        public String recursive(int v){
+            marked = new boolean[n];
             time = 0;
             StringBuilder path = new StringBuilder();
             visit(v, path);
@@ -61,27 +76,14 @@ public class DFS {
             path.append(v).append(" ");
         }
 
-        public static void init(int V, ArrayList<ArrayList<Integer>> adjList){
-            for (int i = 0; i < V; i++){
-                adjList.add(new ArrayList<>());
-            }
-        }
-
-        public static void addEdge(int v1, int v2, ArrayList<ArrayList<Integer>> adjList){
-            adjList.get(v1).add(v2);
-            Collections.sort(adjList.get(v1));
-//            adjList.get(v1).sort(Collections.reverseOrder());
-        }
-
-        public static String DFSIterative(int v, ArrayList<ArrayList<Integer>> adjList){
-            int n = adjList.size();
-            boolean[] marked = new boolean[n];
+        public String iterative(int v) {
+            marked = new boolean[n];
             StringBuilder discoveryOrder = new StringBuilder();
 
             Stack<Integer> stack = new Stack<>();
             stack.push(v);
 
-            while (!stack.isEmpty()){
+            while (!stack.isEmpty()) {
                 int s = stack.pop();
                 if (marked[s]) {
                     continue;
@@ -89,9 +91,10 @@ public class DFS {
 
                 marked[s] = true;
                 discoveryOrder.append(s).append(" ");
-                if(!adjList.get(s).isEmpty()){
+                if (!adjList.get(s).isEmpty()) {
                     ArrayList<Integer> neighbours = adjList.get(s);
-                    for (int i : neighbours){
+                    neighbours.sort(Collections.reverseOrder());
+                    for (int i : neighbours) {
                         if (!marked[i]) stack.push(i);
                     }
                 }
