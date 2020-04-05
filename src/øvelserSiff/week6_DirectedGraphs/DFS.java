@@ -23,10 +23,43 @@ public class DFS {
             DirectedGraph.addEdge(v1, v2, adjList);
         }
 
-        DirectedGraph.DFSIterative(0, adjList);
+        DirectedGraph dg = new DirectedGraph(adjList);
+        String str = dg.DFSRecursive(0);
+        System.out.println("\n" + str);
     }
 
     private static class DirectedGraph {
+
+        int vertices;
+        ArrayList<ArrayList<Integer>> adjList;
+        boolean[] marked;
+        int time;
+
+        public DirectedGraph(ArrayList<ArrayList<Integer>> adjList){
+            vertices = adjList.size();
+            this.adjList = adjList;
+        }
+
+        public String DFSRecursive(int v){
+            marked = new boolean[vertices];
+            time = 0;
+            StringBuilder path = new StringBuilder();
+            visit(v, path);
+            return path.toString();
+        }
+
+        private void visit(int v, StringBuilder path){
+            marked[v] = true;
+            System.out.print(time++ + " ");
+            path.append(v).append(" ");
+            for (int i : adjList.get(v)){
+                if (!marked[i]){
+                    visit(i, path);
+                }
+            }
+            System.out.print(time++ + " ");
+            path.append(v).append(" ");
+        }
 
         public static void init(int V, ArrayList<ArrayList<Integer>> adjList){
             for (int i = 0; i < V; i++){
@@ -36,7 +69,8 @@ public class DFS {
 
         public static void addEdge(int v1, int v2, ArrayList<ArrayList<Integer>> adjList){
             adjList.get(v1).add(v2);
-            adjList.get(v1).sort(Collections.reverseOrder());
+            Collections.sort(adjList.get(v1));
+//            adjList.get(v1).sort(Collections.reverseOrder());
         }
 
         public static String DFSIterative(int v, ArrayList<ArrayList<Integer>> adjList){
