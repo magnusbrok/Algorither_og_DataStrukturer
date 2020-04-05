@@ -40,38 +40,17 @@ public class BFSImpl {
         static int n;
         static ArrayList<ArrayList<Integer>> adjList;
         static boolean[] marked;
-        static int time;
+        static int[] distance;
 
         private static void init(ArrayList<ArrayList<Integer>> adj){
             n = adj.size();
             adjList = adj;
             marked = new boolean[n];
-        }
-
-        public static String recursive(int v, ArrayList<ArrayList<Integer>> adj){
-            init(adj);
-            time = 0;
-            StringBuilder path = new StringBuilder();
-            visit(v, path);
-            return path.toString();
-        }
-
-        private static void visit(int v, StringBuilder path){
-            marked[v] = true;
-//            System.out.print(time++ + " ");
-            path.append(v).append("\n");
-            for (int i : adjList.get(v)){
-                if (!marked[i]){
-                    visit(i, path);
-                }
-            }
-//            System.out.print(time++ + " ");
-            path.append(v).append("\n");
+            distance = new int[n];
         }
 
         public static int iterative(int s, int f, ArrayList<ArrayList<Integer>> adj) {
             init(adj);
-            int[] distance = new int[n];
 
             Queue<Integer> queue = new LinkedList<>();
             queue.add(s);
