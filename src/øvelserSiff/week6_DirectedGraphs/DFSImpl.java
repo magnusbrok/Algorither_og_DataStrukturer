@@ -21,13 +21,8 @@ public class DFSImpl {
             DirectedGraph.addEdge(v1, v2, adjList);
         }
 
-        DFS dfs = new DFS(adjList);
-
-        String str = dfs.recursive(0);
-        System.out.println("\n" + str);
-
-        str = dfs.iterative(0);
-        System.out.println("\n" + str);
+        String str = DFS.recursive(0, adjList);
+        System.out.println(str);
     }
 
     private static class DirectedGraph {
@@ -45,17 +40,14 @@ public class DFSImpl {
     }
 
     private static class DFS{
-        int n;
-        ArrayList<ArrayList<Integer>> adjList;
-        boolean[] marked;
-        int time;
+        static int n;
+        static ArrayList<ArrayList<Integer>> adjList;
+        static boolean[] marked;
+        static int time;
 
-        public DFS(ArrayList<ArrayList<Integer>> adjList){
-            n = adjList.size();
-            this.adjList = adjList;
-        }
-
-        public String recursive(int v){
+        public static String recursive(int v, ArrayList<ArrayList<Integer>> adj){
+            n = adj.size();
+            adjList = adj;
             marked = new boolean[n];
             time = 0;
             StringBuilder path = new StringBuilder();
@@ -63,20 +55,22 @@ public class DFSImpl {
             return path.toString();
         }
 
-        private void visit(int v, StringBuilder path){
+        private static void visit(int v, StringBuilder path){
             marked[v] = true;
-            System.out.print(time++ + " ");
-            path.append(v).append(" ");
+//            System.out.print(time++ + " ");
+            path.append(v).append("\n");
             for (int i : adjList.get(v)){
                 if (!marked[i]){
                     visit(i, path);
                 }
             }
-            System.out.print(time++ + " ");
-            path.append(v).append(" ");
+//            System.out.print(time++ + " ");
+            path.append(v).append("\n");
         }
 
-        public String iterative(int v) {
+        public static String iterative(int v, ArrayList<ArrayList<Integer>> adj) {
+            n = adj.size();
+            adjList = adj;
             marked = new boolean[n];
             StringBuilder discoveryOrder = new StringBuilder();
 
