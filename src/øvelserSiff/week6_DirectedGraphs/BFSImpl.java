@@ -1,11 +1,8 @@
 package øvelserSiff.week6_DirectedGraphs;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
-import java.util.Stack;
+import java.util.*;
 
-public class DFSImpl {
+public class BFSImpl {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
@@ -21,8 +18,8 @@ public class DFSImpl {
             DirectedGraph.addEdge(v1, v2, adjList);
         }
 
-        String str = DFS.recursive(0, adjList);
-        System.out.println(str);
+        int dist = BFS.iterative(0, 1, adjList);
+        System.out.println(dist);
     }
 
     private static class DirectedGraph {
@@ -39,7 +36,7 @@ public class DFSImpl {
         }
     }
 
-    private static class DFS{
+    private static class BFS {
         static int n;
         static ArrayList<ArrayList<Integer>> adjList;
         static boolean[] marked;
@@ -72,30 +69,30 @@ public class DFSImpl {
             path.append(v).append("\n");
         }
 
-        public static String iterative(int v, ArrayList<ArrayList<Integer>> adj) {
+        public static int iterative(int s, int f, ArrayList<ArrayList<Integer>> adj) {
             init(adj);
-            StringBuilder discoveryOrder = new StringBuilder();
+            int[] distance = new int[n];
 
-            Stack<Integer> stack = new Stack<>();
-            stack.push(v);
+            Queue<Integer> queue = new LinkedList<>();
+            queue.add(s);
+            distance[s] = 0;
 
-            while (!stack.isEmpty()) {
-                int s = stack.pop();
-                if (marked[s]) {
-                    continue;
-                }
+            while (!queue.isEmpty()){
+                int v = queue.remove();
+                ArrayList<Integer> neighbours = adjList.get(v);
 
-                marked[s] = true;
-                discoveryOrder.append(s).append(" ");
-                if (!adjList.get(s).isEmpty()) {
-                    ArrayList<Integer> neighbours = adjList.get(s);
-                    neighbours.sort(Collections.reverseOrder());
-                    for (int i : neighbours) {
-                        if (!marked[i]) stack.push(i);
+                for (int i : neighbours) {
+                    if (!marked[i]) {
+                        marked[i] = true;
+                        distance[i] = distance[v] + 1;
+                        if (v == f){
+                            return distance[f];
+                        }
+                        queue.add(i);
                     }
                 }
             }
-            return discoveryOrder.toString();
+            return distance[f];
         }
     }
 }
